@@ -176,6 +176,7 @@ export default function FormBuilder() {
       return;
     }
     mutation.mutate({
+      id:"",
       title: formTitle,
       description: formDescription,
       questions,
