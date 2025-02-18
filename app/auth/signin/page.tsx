@@ -18,7 +18,7 @@ export default function SignIn() {
     }
   }, [session]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e:any) => {
     e.preventDefault();
     setError("");
     const { error } = await supabase.auth.signInWithPassword({ email, password });
