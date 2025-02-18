@@ -27,7 +27,7 @@ import QuestionInput from "@/components/QuestionInput";
 import Link from "next/link";
 import PreviewModal from "@/components/FormPreviewModal";
 import { useMutation } from "@tanstack/react-query";
-import { saveForm } from "@/lib/supabaseApi";
+import { FormData, saveForm } from "@/lib/supabaseApi";
 import DataSaverOffIcon from "@mui/icons-material/DataSaverOff";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { useRouter } from "next/navigation";
