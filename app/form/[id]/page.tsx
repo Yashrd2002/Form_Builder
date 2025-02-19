@@ -64,7 +64,9 @@ export default function FormFillerPage() {
   if (!form) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-lg text-gray-700">Form not found. Please try again later.</p>
+        <p className="text-lg text-gray-700">
+          Form not found. Please try again later.
+        </p>
       </div>
     );
   }
@@ -82,25 +84,6 @@ export default function FormFillerPage() {
           onSubmit={handleSubmit}
           isSubmitting={isSubmitting}
         />
-
-        {/* <div className="mt-8">
-          <button
-            onClick={handleSubmit}
-            
-            disabled={isSubmitting}
-            className={`w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-200 ${
-              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            {isSubmitting ? (
-              <div className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-              </div>
-            ) : (
-              "Submit"
-            )}
-          </button>
-        </div> */}
       </div>
     </div>
   );

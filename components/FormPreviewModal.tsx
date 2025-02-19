@@ -15,7 +15,7 @@ interface PreviewModalProps {
   onClose: () => void;
   formTitle: string;
   formDescription: string;
-  questions: Question[];
+  questions: any;
 }
 
 const PreviewModal: React.FC<PreviewModalProps> = ({
@@ -50,7 +50,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({
           {formDescription}
         </Typography>
         <Divider sx={{ my: 2 }} />
-        {questions.map((question, index) => (
+        {questions.map((question:any, index:any) => (
           <Box key={question.id} sx={{ mb: 3 }}>
             <Typography variant="h6" gutterBottom>
               {question.questionText || `Question ${index + 1}`}
@@ -74,7 +74,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({
   );
 };
 
-const renderQuestionInput = (question: Question) => {
+const renderQuestionInput = (question: any) => {
   switch (question.type) {
     case "text":
     case "shortAnswer":
@@ -91,7 +91,7 @@ const renderQuestionInput = (question: Question) => {
     case "multipleChoice":
       return (
         <Box>
-          {question.options?.map((option, index) => (
+          {question.options?.map((option:any, index:any) => (
             <FormControlLabel
               key={index}
               control={<Checkbox />}
@@ -115,7 +115,7 @@ const renderQuestionInput = (question: Question) => {
     case "checkbox":
       return (
         <Box>
-          {question.options?.map((option, index) => (
+          {question.options?.map((option:any, index:any) => (
             <FormControlLabel
               key={index}
               control={<Checkbox />}

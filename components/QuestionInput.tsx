@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 interface QuestionInputProps {
-  question: Question;
+  question: any;
   updateQuestionText: (id: string, text: string) => void;
   updateQuestionOptions: (id: string, options: string[]) => void;
   toggleFileType: (id: string, fileType: string) => void;
@@ -44,7 +44,7 @@ const QuestionInput: React.FC<QuestionInputProps> = ({
             onChange={(e) => updateQuestionText(question.id, e.target.value)}
             sx={{ mt: 1 }}
           />
-          {question.options?.map((option, index) => (
+          {question.options?.map((option:any, index:any) => (
             <TextField
               key={index}
               fullWidth
@@ -106,7 +106,7 @@ const QuestionInput: React.FC<QuestionInputProps> = ({
             onChange={(e) => updateQuestionText(question.id, e.target.value)}
             sx={{ mt: 1 }}
           />
-          {question.options?.map((option, index) => (
+          {question.options?.map((option:any, index:any) => (
             <Box key={index} sx={{ display: "flex", alignItems: "center" }}>
               <Checkbox disabled />
               <TextField

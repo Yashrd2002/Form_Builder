@@ -69,7 +69,7 @@ export default function FormResponsesPage() {
     const questions = Array.from(
       new Set(
         responses.flatMap((response) =>
-          form.questions.map((question) => question.questionText)
+          form.questions.map((question: any) => question.questionText)
         )
       )
     );
@@ -84,7 +84,7 @@ export default function FormResponsesPage() {
     responses.forEach((response) => {
       const answers = questions.map((question) => {
         const questionId = form.questions.find(
-          (q) => q.questionText === question
+          (q: any) => q.questionText === question
         )?.id;
         const answer = response.responses[questionId];
 

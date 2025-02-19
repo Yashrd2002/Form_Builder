@@ -16,6 +16,7 @@ import {
   Alert,
   Divider,
   Stack,
+  AlertColor,
 } from "@mui/material";
 import DifferenceIcon from "@mui/icons-material/Difference";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -60,7 +61,7 @@ export default function FormBuilder() {
     },
   ]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarSeverity, setSnackbarSeverity] = useState<AlertColor>("success");
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -176,7 +177,7 @@ export default function FormBuilder() {
       return;
     }
     mutation.mutate({
-      id:"",
+      id: "",
       title: formTitle,
       description: formDescription,
       questions,

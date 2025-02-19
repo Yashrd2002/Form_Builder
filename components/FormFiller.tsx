@@ -49,7 +49,7 @@ export default function FormFiller({
 
       console.log("File uploaded successfully:", publicUrl);
       onResponseChange(questionId, publicUrl);
-    } catch (error) {
+    } catch (error:any) {
       console.error("Error uploading file:", error.message);
     }
   };

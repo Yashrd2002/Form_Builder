@@ -16,18 +16,18 @@ import {
   Alert,
   Divider,
   Stack,
+  AlertColor,
 } from "@mui/material";
 import DifferenceIcon from "@mui/icons-material/Difference";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import PreviewIcon from "@mui/icons-material/Preview";
-import { supabase } from "@/lib/supabaseClient";
+
 import QuestionInput from "@/components/QuestionInput";
 import Link from "next/link";
 import PreviewModal from "@/components/FormPreviewModal";
 import { useMutation } from "@tanstack/react-query";
-import { fetchForm, saveForm, UpdateForm } from "@/lib/supabaseApi";
+import { fetchForm, FormData, UpdateForm } from "@/lib/supabaseApi";
 import DataSaverOffIcon from "@mui/icons-material/DataSaverOff";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { useParams, useRouter } from "next/navigation";
@@ -54,14 +54,17 @@ export default function FormBuilder() {
   const [formDescription, setFormDescription] = useState("");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarSeverity, setSnackbarSeverity] =
+    useState<AlertColor>("success");
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const [previewOpen, setPreviewOpen] = useState(false);
 
   useEffect(() => {
     const fetchform = async () => {
-      const formData = await fetchForm(id);
+      const formData = id
+        ? await fetchForm(Array.isArray(id) ? id[0] : id)
+        : null;
 
       if (formData) {
         setFormTitle(formData.title);
@@ -181,8 +184,9 @@ export default function FormBuilder() {
       setSnackbarOpen(true);
       return;
     }
+    const idStr = Array.isArray(id) ? id[0] : id ?? "";
     mutation.mutate({
-      id: id,
+      id: idStr,
       title: formTitle,
       description: formDescription,
       questions,
